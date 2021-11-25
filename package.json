@@ -12,6 +12,7 @@
         "@turf/random": "^6.5.0",
         "babel-plugin-styled-components": "^1.13.3",
         "d3": "^7.0.4",
+        "gh-pages": "^3.2.3",
         "point-in-svg-polygon": "^1.0.25",
         "rc-slider": "^9.7.4",
         "react": "^17.0.2",
@@ -22,6 +23,8 @@
         "web-vitals": "^1.1.2"
     },
     "scripts": {
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build",
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
