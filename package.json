@@ -2,7 +2,7 @@
     "name": "mt_react",
     "version": "0.1.0",
     "private": true,
-    "homepage": "https://vanmarkic.github.io/mt_react",
+    "homepage": ".",
     "dependencies": {
         "@svgr/webpack": "^5.5.0",
         "@testing-library/jest-dom": "^5.15.1",
@@ -25,10 +25,10 @@
     "scripts": {
         "predeploy": "npm run build",
         "deploy": "gh-pages -d build",
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "start": "react-app-rewired start",
+        "build": "react-app-rewired build",
+        "test": "react-app-rewired test"
     },
     "eslintConfig": {
         "extends": [
@@ -47,5 +47,8 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
+    },
+    "devDependencies": {
+        "react-app-rewired": "^2.1.8"
     }
 }
