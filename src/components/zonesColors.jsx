@@ -449,6 +449,7 @@ const ZonesColors = () => {
           >
             <DataLabel></DataLabel>
             <Slider
+              style={{ width: "100%"}}
               marks={markPoints}
               min={0}
               max={weatherDataDates.length - 1}
