@@ -7,6 +7,25 @@ import ZonesColors from "./components/zonesColors";
 import "./styles/index.css";
 
 const MainWrapper = styled.div`
+  @import url("https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,200;0,300;0,400;0,700;0,900;1,300&display=swap");
+
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  font-family: "Overpass", sans-serif !important;
+  display: inline !important;
+  margin: auto !important;
+  background-color: #222222 !important;
+  color: #f2f2f2 !important;
+
+  a {
+    color: #f2f2f2 !important;
+  }
+
+  .row {
+    display: flex !important;
+  }
   margin: auto;
   @media only screen and ${breakpoint.device.xs} {
     margin: auto;
