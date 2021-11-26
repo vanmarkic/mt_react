@@ -28,9 +28,7 @@
         "eject": "react-scripts eject",
         "start": "react-app-rewired start",
         "test": "react-app-rewired test",
-        "build": "npm run build:react && npm run build:bundle",
-        "build:react": "react-scripts build",
-        "build:bundle": "webpack --config webpack.config.js"
+        "build": "react-app-rewired build"
     },
     "eslintConfig": {
         "extends": [

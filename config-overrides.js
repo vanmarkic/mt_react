@@ -4,6 +4,7 @@ module.exports = function override(config, env) {
             default: false,
         },
     };
+    config.output.filename = 'static/js/bundle.js'
     config.optimization.runtimeChunk = false;
     return config;
 }
