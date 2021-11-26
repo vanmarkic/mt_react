@@ -12,7 +12,7 @@ const MainWrapper = styled.div`
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  font-family: "Overpass" !important;
+  font-family: "Overpass", sans-serif !important;
   margin: auto !important;
   background-color: #222222 !important;
   color: #f2f2f2 !important;
