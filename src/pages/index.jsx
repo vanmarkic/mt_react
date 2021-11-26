@@ -3,10 +3,6 @@ import styled from "styled-components";
 import breakpoint from "../styles/globalStyle";
 
 import ZonesColors from "../components/zonesColors";
-// import ZonesRandomPoints from '../components/zonesRandomPoints'
-import ZonesRandomPoints from "../components/zonesRandomPointsV2";
-
-import "../styles/index.css";
 
 const MainWrapper = styled.div`
   margin: auto;
@@ -27,7 +23,6 @@ const IndexPage = () => {
   return (
     <MainWrapper>
       <ZonesColors />
-      {/* <ZonesRandomPoints /> */}
     </MainWrapper>
   );
 };
