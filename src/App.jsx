@@ -6,7 +6,7 @@ import ZonesColors from "./components/zonesColors";
 
 
 const MainWrapper = styled.div`
-  /* @import url("https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,200;0,300;0,400;0,700;0,900;1,300&display=swap");
+  /* @import url("https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,200;0,300;0,400;0,700;0,900;1,300&display=swap"); */
 
   margin: 0;
   -webkit-font-smoothing: antialiased;
@@ -23,7 +23,7 @@ const MainWrapper = styled.div`
 
   .row {
     display: flex !important;
-  } */
+  }
   margin: auto;
   @media only screen and ${breakpoint.device.xs} {
     margin: auto;
