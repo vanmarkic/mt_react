@@ -4,11 +4,8 @@ import breakpoint from "./styles/globalStyle";
 
 import ZonesColors from "./components/zonesColors";
 
-
 const MainWrapper = styled.div`
-  /* @import url("https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,200;0,300;0,400;0,700;0,900;1,300&display=swap"); */
-
-  margin: 0;
+  margin: 15px auto !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -26,10 +23,12 @@ const MainWrapper = styled.div`
   }
   margin: auto;
   @media only screen and ${breakpoint.device.xs} {
-    margin: auto;
-    width: 95vw;
+    margin: 15px auto;
+    width: 95%;
   }
   @media only screen and ${breakpoint.device.sm} {
+    margin: 15px auto;
+    width: 95%;
   }
   @media only screen and ${breakpoint.device.lg} {
     padding: 30px 30px;

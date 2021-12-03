@@ -7,7 +7,7 @@ import ZonesColors from "../components/zonesColors";
 const MainWrapper = styled.div`
   margin: auto;
   @media only screen and ${breakpoint.device.xs} {
-    margin: auto;
+    /* margin: auto; */
     width: 95vw;
   }
   @media only screen and ${breakpoint.device.sm} {

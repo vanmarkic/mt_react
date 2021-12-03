@@ -88,7 +88,7 @@ const Button = styled.div`
 `;
 const Row = styled.div`
   display: flex;
-  margin: 0px;
+  /* margin: 0px; */
 `;
 
 const Wrapper = styled.div`
@@ -358,7 +358,7 @@ const Wrapper = styled.div`
     height: 85vh;
     justify-content: space-between;
     width: 85vw;
-    margin: auto;
+    margin: 15px auto;
     div#map {
       order: 1;
       height: 50vh !important;
