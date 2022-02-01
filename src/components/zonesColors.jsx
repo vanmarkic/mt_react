@@ -89,6 +89,7 @@ const Button = styled.div`
 const Row = styled.div`
   display: flex;
   /* margin: 0px; */
+  max-width: 600px;
 `;
 
 const Wrapper = styled.div`
@@ -357,7 +358,7 @@ const Wrapper = styled.div`
   @media only screen and ${breakpoint.device.xs} {
     height: 100%;
     justify-content: space-between;
-    width: 85vw;
+    /* width: 85vw; */
     margin: 15px auto;
     div#map {
       order: 1;
@@ -463,12 +464,14 @@ const Metrics = styled.div`
     font-size: 24px;
   }
 `;
+
 const DataLayers = styled.div`
   display: none;
   @media only screen and ${breakpoint.device.sm} {
     display: block;
   }
 `;
+
 const DataLabel = styled.div`
   display: none;
   font-size: 10px;
@@ -577,7 +580,7 @@ const ZonesColors = () => {
           id="colors"
           style={{
             justifyContent: "center",
-            alignItems: "end",
+            alignItems: "start",
             minWidth: "100px",
             margin: "15px auto",
           }}
