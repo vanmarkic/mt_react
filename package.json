@@ -50,8 +50,6 @@
     },
     "devDependencies": {
         "react-app-rewired": "^2.1.8",
-        "uglifyjs-webpack-plugin": "^2.2.0",
-        "url-loader": "^4.1.1",
-        "webpack-cli": "^4.9.1"
+        "url-loader": "^4.1.1"
     }
 }
