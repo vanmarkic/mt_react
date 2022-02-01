@@ -18,7 +18,7 @@ const Gate = ({ amount }) => {
     <>
 
       <path id="gate" d={polygonPoints} style={style.zones} />
-      {randomPoints && randomPoints.map((point,index) => (<circle key={index} fill={"red"} cx={point[0]} cy={point[1]} r={style.dots.radius} />))}
+      {randomPoints && randomPoints.map((point,index) => (<circle key={index} fill={"orange"} cx={point[0]} cy={point[1]} r={style.dots.radius} />))}
     </>
   )
 };

@@ -66,7 +66,7 @@ const totalAmountOfVisitors = weatherDataDates.map((el, idx) => {
 
 const sliderStyle = {
   marginTop: "auto",
-  marginBottom: "auto",
+  marginBottom: "auto"
 };
 
 const Button = styled.div`
@@ -355,13 +355,14 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   @media only screen and ${breakpoint.device.xs} {
-    height: 85vh;
+    height: 100%;
     justify-content: space-between;
     width: 85vw;
     margin: 15px auto;
     div#map {
       order: 1;
-      height: 50vh !important;
+      height: 50% !important;
+      margin-top: 5%;
     }
     div#colors {
       order: 2;
@@ -408,7 +409,7 @@ const TopComponent = styled.div`
   @media only screen and ${breakpoint.device.lg} {
     flex-direction: row;
     justify-content: space-around;
-    width: 95vw;
+    width: 95%;
   }
 `;
 const LegendWrapper = styled.div`
@@ -448,12 +449,12 @@ const Legend = styled.div`
     display: flex;
     flex-direction: row;
     margin: 10px 0px;
-    width: 20vw;
+    width: 20%;
     justify-content: space-between;
   }
 `;
 
-const Metrics = styled.h2`
+const Metrics = styled.div`
   margin: 0px;
   @media only screen and ${breakpoint.device.xs} {
     font-size: 16px;
@@ -478,11 +479,6 @@ const DataLabel = styled.div`
   }
 `;
 
-// const Bar = styled.div`
-//   width: ${props => props.ratio * 100}%;
-//   background-color: darkblue;
-//   height: 20px;
-// `
 
 const VerticalNeedle = styled.div`
   display: none;
@@ -490,10 +486,10 @@ const VerticalNeedle = styled.div`
   @media only screen and ${breakpoint.device.sm} {
     display: block;
     width: 1px;
-    height: 10vh;
+    height: 40px;
     background-color: white;
     margin: auto;
-    margin-top: -10vh;
+    margin-top: -40px;
   }
 `;
 
@@ -586,18 +582,18 @@ const ZonesColors = () => {
             margin: "15px auto",
           }}
         >
-          <Legend style={{ color: "lightblue" }}>Water</Legend>
-          <Legend style={{ color: "red" }}>Gate</Legend>
-          <Legend style={{ color: "white" }}>Fitnesstuin</Legend>
-          <Legend style={{ color: "yellow" }}>Picnic</Legend>
+          <Legend style={{ color: "lightblue" }}>Binnenhaven</Legend>
+          <Legend style={{ color: "orange" }}>Kade</Legend>
+          <Legend style={{ color: "yellow" }}>Fitnesstuin</Legend>
+          <Legend style={{ color: "lightgreen" }}>Park / Voowerf</Legend>
         </LegendWrapper>
 
         <Row id="map">
           <MtMap>
-            <Picnic amount={getDensity("Picnic")} />
             <Water amount={getDensity("SwimmingArea")} />
-            <Fitness amount={getDensity("Fitness")} />
             <Gate amount={getDensity("Terrace")} />
+            <Fitness amount={getDensity("Fitness")} />
+            <Picnic amount={getDensity("Picnic")} />
           </MtMap>
         </Row>
 
@@ -678,7 +674,8 @@ const ZonesColors = () => {
             WebkitTapHighlightColor: "rgba(0,0,0,0)",
             display: "flex",
             flexDirection: "column",
-            width: "80vw",
+            width: "80vw", 
+            marginBottom: "5%",
           }}
         >
           <DataLayers>
