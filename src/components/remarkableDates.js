@@ -25,5 +25,9 @@ const remarkableDates = [{
     },
 ]
 
+export default const defaultDate = '2020-12-04';
+
+export default const isPlayingAutomatically = false;
+
 
 export default remarkableDates
