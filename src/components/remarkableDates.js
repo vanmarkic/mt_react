@@ -3,7 +3,7 @@ const remarkableDates = [{
         date: '2021-06-02',
         undertitle: `Is het warm? Dan is het druk op het Marineterrein. 
                     Blijft er genoeg groen in de stad over om af te koelen en te ontspannen?`,
-        link: 'http://google.com'
+        link: 'http://google.com/'
     },
     {
         title: 'Drukte in de Fitnesstuin ',
