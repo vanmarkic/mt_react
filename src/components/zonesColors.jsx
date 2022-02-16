@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import style from "./Map/ZonesWithDots/styles";
 
 import Slider, { Handle } from "rc-slider";
 
@@ -13,14 +14,17 @@ import densityPeakPerDay from "../content/density_day.json";
 
 import weatherData from "../content/schiphol_weather.json";
 
-import remarkableDates from "./remarkableDates";
+import remarkableDates, {
+  isAutoPlaying,
+  startingDate,
+} from "../remarkableDates";
 
-import Picnic from "./Map/ZonesWithDots/picnic";
-import Water from "./Map/ZonesWithDots/water";
-import Fitness from "./Map/ZonesWithDots/fitness";
-import Gate from "./Map/ZonesWithDots/gate";
+import Park from "./Map/ZonesWithDots/Park";
+import Binnenhaven from "./Map/ZonesWithDots/Binnenhaven";
+import Fitness from "./Map/ZonesWithDots/Fitness";
+import Kade from "./Map/ZonesWithDots/Kade";
 import BarChart from "./BarChart";
-import MtMap from "./Map/Map";
+import SvgMapWrapper from "./Map/Map";
 
 const weatherDataDates = weatherData.map((el) => el.date.substring(0, 10));
 const weatherDataAverageTemp = weatherData.map((el) => el.TG / 10);
@@ -66,7 +70,7 @@ const totalAmountOfVisitors = weatherDataDates.map((el, idx) => {
 
 const sliderStyle = {
   marginTop: "auto",
-  marginBottom: "auto"
+  marginBottom: "auto",
 };
 
 const Button = styled.div`
@@ -482,7 +486,6 @@ const DataLabel = styled.div`
   }
 `;
 
-
 const VerticalNeedle = styled.div`
   display: none;
 
@@ -530,17 +533,39 @@ const TempStrip = () => {
 };
 
 const ZonesColors = () => {
-  const [dateIndex, setDateIndex] = useState(0);
+  const [dateIndex, setDateIndex] = useState(
+    startingDate ? weatherDataDates.indexOf(startingDate) : 0
+  );
   const [intervalId, setIntervalId] = useState(undefined);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(isAutoPlaying);
 
   const getDensity = (areaName) => {
-    return densityPeakPerDay[weatherDataDates[dateIndex]] &&
-      densityPeakPerDay[weatherDataDates[dateIndex]][areaName] !== ""
-      ? Math.round(
-          parseFloat(densityPeakPerDay[weatherDataDates[dateIndex]][areaName])
-        ) * 6
-      : undefined;
+    if (
+      densityPeakPerDay[weatherDataDates[dateIndex]] &&
+      densityPeakPerDay[weatherDataDates[dateIndex]][areaName] !== "" &&
+      densityPeakPerDay[weatherDataDates[dateIndex]][areaName] !== 0
+    ) {
+      const isString =
+        typeof densityPeakPerDay[weatherDataDates[dateIndex]][areaName] ===
+        "string";
+      const amount =
+        Math.ceil(
+          isString
+            ? parseFloat(
+                densityPeakPerDay[weatherDataDates[dateIndex]][
+                  areaName
+                ].replace(",", ".")
+              )
+            : densityPeakPerDay[weatherDataDates[dateIndex]][areaName]
+        ) * 6;
+      //   if (areaName === "Fitness") console.log(amount);
+      return amount;
+    } else {
+      //   if (areaName === "Fitness") {
+      //     console.log(densityPeakPerDay[weatherDataDates[dateIndex]]);
+      //   }
+      return undefined;
+    }
   };
 
   useEffect(() => {
@@ -548,25 +573,32 @@ const ZonesColors = () => {
   }, [dateIndex, intervalId]);
 
   useEffect(() => {
-    playSlider();
+    if (isAutoPlaying === true) {
+      let intervalIds = setInterval(
+        () => setDateIndex((dateIndex) => dateIndex + 1),
+        200
+      );
+      setIntervalId(intervalIds);
+      setIsPlaying(true);
+    }
   }, []);
 
-  const playSlider = () => {
-    if (isPlaying && intervalId) {
-      clearInterval(intervalId);
-      setIsPlaying(false);
-      return;
-    }
-    let intervalIds = setInterval(
-      () => setDateIndex((dateIndex) => dateIndex + 1),
-      200
-    );
-    setIntervalId(intervalIds);
-    setIsPlaying(true);
-  };
+  //   const playSlider = () => {
+  //     if (isPlaying === true && intervalId) {
+  //       clearInterval(intervalId);
+  //       setIsPlaying(false);
+  //       return;
+  //     }
+  //     let intervalIds = setInterval(
+  //       () => setDateIndex((dateIndex) => dateIndex + 1),
+  //       200
+  //     );
+  //     setIntervalId(intervalIds);
+  //     setIsPlaying(true);
+  //   };
 
   const stopSlider = () => {
-    if (isPlaying && intervalId) {
+    if (isPlaying === true && intervalId) {
       clearInterval(intervalId);
       setIsPlaying(false);
       return;
@@ -592,12 +624,25 @@ const ZonesColors = () => {
         </LegendWrapper>
 
         <Row id="map">
-          <MtMap>
-            <Water amount={getDensity("SwimmingArea")} />
-            <Gate amount={getDensity("Terrace")} />
-            <Fitness amount={getDensity("Fitness")} />
-            <Picnic amount={getDensity("Picnic")} />
-          </MtMap>
+          <SvgMapWrapper>
+            <Binnenhaven
+              amount={getDensity("SwimmingArea")}
+              date={dateIndex}
+            ></Binnenhaven>
+            <Kade
+              amount={getDensity("Terrace")}
+              polygonPoints="M249.65 293.65l13.2-4.8 56.3 135.9 260 240-13.3 14.1-9-8.4v-.6h-1.2l-15 8.4-74.4-75 6.6-7.2-31.8-31.2-6.6 6.6-100.2-98.4-26.4-30-57.6-149.4"
+              date={dateIndex}
+            >
+              <path
+                id="gate"
+                d="M249.65 293.65l13.2-4.8 56.3 135.9 260 240-13.3 14.1-9-8.4v-.6h-1.2l-15 8.4-74.4-75 6.6-7.2-31.8-31.2-6.6 6.6-100.2-98.4-26.4-30-57.6-149.4"
+                style={style.zones}
+              />
+            </Kade>
+            <Fitness amount={getDensity("Fitness")} date={dateIndex}></Fitness>
+            <Park amount={getDensity("Picnic")} date={dateIndex}></Park>
+          </SvgMapWrapper>
         </Row>
 
         <LegendWrapper
@@ -677,7 +722,7 @@ const ZonesColors = () => {
             WebkitTapHighlightColor: "rgba(0,0,0,0)",
             display: "flex",
             flexDirection: "column",
-            width: "80vw", 
+            width: "80vw",
             marginBottom: "5%",
           }}
         >
@@ -730,7 +775,7 @@ const ZonesColors = () => {
             />
           </Row>
         </div>
-        <Button onClick={playSlider}>{isPlaying ? "pause" : "play"}</Button>
+        {/* <Button onClick={playSlider}>{isPlaying ? "pause" : "play"}</Button> */}
       </Row>
     </Wrapper>
   );
